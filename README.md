@@ -1,2 +1,2 @@
-# angular-mediumclone
-ReadWorld.io project using Angular
+# Conduit
+[RealWorld.io](https://github.com/gothinkster/realworld) frontend learning project using Angular
