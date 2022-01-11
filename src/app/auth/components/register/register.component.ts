@@ -24,8 +24,6 @@ export class RegisterComponent implements OnInit {
       email: '',
       password: ''
     })
-
-    console.log(this.form.valid)
   }
 
   onSubmit(): void {
