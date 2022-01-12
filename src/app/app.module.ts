@@ -9,6 +9,7 @@ import {environment} from "src/environments/environment";
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {AuthModule} from "src/app/auth/auth.module";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {AuthModule} from "src/app/auth/auth.module";
     BrowserModule,
     AppRoutingModule,
     AuthModule,
+    HttpClientModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production})
