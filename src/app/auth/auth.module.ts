@@ -12,11 +12,18 @@ import {RegisterEffect} from "src/app/auth/store/effects/register.effect";
 import {ErrorMessagesModule} from "src/app/shared/modules/error-messages/error-messages.module";
 import {PersistenceService} from "src/app/shared/services/persistence.service";
 import {LoginEffect} from "src/app/auth/store/effects/login.effect";
+import {LoginComponent} from "src/app/auth/components/login/login.component";
 
-const routes: Routes = [{
-  path: 'register',
-  component: RegisterComponent
-}]
+const routes: Routes = [
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  }
+]
 
 @NgModule({
   imports: [
@@ -27,7 +34,10 @@ const routes: Routes = [{
     EffectsModule.forFeature([RegisterEffect, LoginEffect]),
     ErrorMessagesModule
   ],
-  declarations: [RegisterComponent],
+  declarations: [
+    RegisterComponent,
+    LoginComponent
+  ],
   providers: [
     AuthService,
     PersistenceService

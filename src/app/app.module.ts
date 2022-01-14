@@ -10,6 +10,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {AuthModule} from "src/app/auth/auth.module";
 import {HttpClientModule} from "@angular/common/http";
+import {TopBarModule} from "src/app/shared/modules/top-bar/top-bar.module";
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserModule,
     AppRoutingModule,
     AuthModule,
+    TopBarModule,
     HttpClientModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
