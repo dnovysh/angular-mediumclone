@@ -6,8 +6,8 @@ import {Observable} from "rxjs";
 import {registerAction} from "src/app/auth/store/actions/register.action";
 import {errorsSelector, isSubmittingSelector} from "src/app/auth/store/selector";
 import {AppStateInterface} from "src/app/shared/types/app-state.interface";
-import {RegisterRequestInterface} from "src/app/auth/types/register-request.interface";
-import {BackendErrorsInterface} from "src/app/auth/types/backend-errors.interface";
+import {RegisterRequestInterface} from "src/app/auth/types/register/register-request.interface";
+import {BackendErrorsInterface} from "src/app/auth/types/auth/backend-errors.interface";
 
 @Component({
   selector: 'mc-register',

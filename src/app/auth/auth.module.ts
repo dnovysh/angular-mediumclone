@@ -10,6 +10,8 @@ import {reducer} from "src/app/auth/store/reducer";
 import {AuthService} from "src/app/auth/services/auth.service";
 import {RegisterEffect} from "src/app/auth/store/effects/register.effect";
 import {ErrorMessagesModule} from "src/app/shared/modules/error-messages/error-messages.module";
+import {PersistenceService} from "src/app/shared/services/persistence.service";
+import {LoginEffect} from "src/app/auth/store/effects/login.effect";
 
 const routes: Routes = [{
   path: 'register',
@@ -22,12 +24,13 @@ const routes: Routes = [{
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     StoreModule.forFeature('auth', reducer),
-    EffectsModule.forFeature([RegisterEffect]),
+    EffectsModule.forFeature([RegisterEffect, LoginEffect]),
     ErrorMessagesModule
   ],
   declarations: [RegisterComponent],
   providers: [
-    AuthService
+    AuthService,
+    PersistenceService
   ]
 })
 export class AuthModule {
