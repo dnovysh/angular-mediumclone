@@ -13,6 +13,7 @@ import {ErrorMessagesModule} from "src/app/shared/modules/error-messages/error-m
 import {PersistenceService} from "src/app/shared/services/persistence.service";
 import {LoginEffect} from "src/app/auth/store/effects/login.effect";
 import {LoginComponent} from "src/app/auth/components/login/login.component";
+import {VerifyIdentityEffect} from "src/app/auth/store/effects/verify-identity.effect";
 
 const routes: Routes = [
   {
@@ -31,7 +32,11 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     StoreModule.forFeature('auth', reducer),
-    EffectsModule.forFeature([RegisterEffect, LoginEffect]),
+    EffectsModule.forFeature([
+      RegisterEffect,
+      LoginEffect,
+      VerifyIdentityEffect
+    ]),
     ErrorMessagesModule
   ],
   declarations: [

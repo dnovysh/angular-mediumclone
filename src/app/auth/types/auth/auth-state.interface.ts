@@ -3,6 +3,7 @@ import {BackendErrorsInterface} from "src/app/auth/types/auth/backend-errors.int
 
 export interface AuthStateInterface {
   isSubmitting: boolean,
+  isIdentityVerifying: boolean,
   currentUser: CurrentUserInterface | null,
   isLoggedIn: boolean | null,
   errors: BackendErrorsInterface | null
