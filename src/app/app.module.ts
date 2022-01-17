@@ -13,6 +13,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {TopBarModule} from "src/app/shared/modules/top-bar/top-bar.module";
 import {PersistenceService} from "src/app/shared/services/persistence.service";
 import {JwtInterceptor} from "src/app/shared/services/jwt-interceptor.service";
+import {GlobalFeedModule} from "src/app/global-feed/global-feed.module";
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {JwtInterceptor} from "src/app/shared/services/jwt-interceptor.service";
     AppRoutingModule,
     AuthModule,
     TopBarModule,
+    GlobalFeedModule,
     HttpClientModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
