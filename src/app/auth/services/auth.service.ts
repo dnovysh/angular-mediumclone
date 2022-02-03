@@ -7,8 +7,7 @@ import {CurrentUserInterface} from "src/app/shared/types/current-user.interface"
 import {environment} from "src/environments/environment";
 import {AuthResponseInterface} from "src/app/auth/types/auth/auth-response.interface";
 import {LoginRequestInterface} from "src/app/auth/types/login/login-request.interface";
-import {LOGIN_API_URL, REGISTER_API_URL, VERIFY_IDENTITY_API_URL}
-  from "src/app/shared/constants/app.constant";
+import {LOGIN_API_URL, REGISTER_API_URL, VERIFY_IDENTITY_API_URL} from "src/app/shared/constants/app.constant";
 
 @Injectable()
 export class AuthService {
