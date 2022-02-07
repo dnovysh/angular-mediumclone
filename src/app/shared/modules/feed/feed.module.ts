@@ -11,21 +11,23 @@ import {FeedService} from "src/app/shared/modules/feed/services/feed.service";
 import {ErrorMessageModule} from "src/app/shared/modules/error-message/error-message.module";
 import {LoadingModule} from "src/app/shared/modules/loading/loading.module";
 import {PaginationModule} from "src/app/shared/modules/pagination/pagination.module";
+import {TagListModule} from "src/app/shared/modules/tag-list/tag-list.module";
 
 
 @NgModule({
   declarations: [
     FeedComponent
   ],
-  imports: [
-    CommonModule,
-    EffectsModule.forFeature([GetFeedEffect]),
-    StoreModule.forFeature('feed', reducer),
-    RouterModule,
-    ErrorMessageModule,
-    LoadingModule,
-    PaginationModule
-  ],
+    imports: [
+        CommonModule,
+        EffectsModule.forFeature([GetFeedEffect]),
+        StoreModule.forFeature('feed', reducer),
+        RouterModule,
+        ErrorMessageModule,
+        LoadingModule,
+        PaginationModule,
+        TagListModule
+    ],
   exports: [FeedComponent],
   providers: [FeedService]
 })

@@ -33,7 +33,10 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "query-string"
+            ]
           },
           "configurations": {
             "production": {
@@ -75,7 +78,8 @@
               "browserTarget": "angular-mediumclone:build:production"
             },
             "development": {
-              "browserTarget": "angular-mediumclone:build:development"
+              "browserTarget": "angular-mediumclone:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
