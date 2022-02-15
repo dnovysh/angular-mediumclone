@@ -14,6 +14,8 @@ import {TopBarModule} from "src/app/shared/modules/top-bar/top-bar.module";
 import {PersistenceService} from "src/app/shared/services/persistence.service";
 import {JwtInterceptor} from "src/app/shared/services/jwt-interceptor.service";
 import {GlobalFeedModule} from "src/app/global-feed/global-feed.module";
+import {YourFeedModule} from "src/app/your-feed/your-feed.module";
+import {TagFeedModule} from "src/app/tag-feed/tag-feed.module";
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import {GlobalFeedModule} from "src/app/global-feed/global-feed.module";
     AppRoutingModule,
     AuthModule,
     TopBarModule,
+    YourFeedModule,
+    TagFeedModule,
     GlobalFeedModule,
     HttpClientModule,
     StoreModule.forRoot({router: routerReducer}, {}),

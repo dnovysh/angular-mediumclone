@@ -3,7 +3,7 @@ import {ARTICLES_API_URL} from "src/app/shared/constants/app.constant";
 
 
 @Component({
-  selector: 'mc-global-feed',
+  selector: 'mc-your-feed',
   templateUrl: './global-feed.component.html',
   styleUrls: ['./global-feed.component.scss']
 })
