@@ -31,6 +31,7 @@ export class FeedComponent implements OnInit, OnDestroy, OnChanges {
   baseUrl: string
   queryParamsSubscription: Subscription
   currentPage: number
+  preventAdditionalFetch: boolean
 
   ngOnInit(): void {
     this.initializeValues()
@@ -44,6 +45,32 @@ export class FeedComponent implements OnInit, OnDestroy, OnChanges {
     this.baseUrl = this.router.url.split('?')[0]
   }
 
+  private initializeListeners(): void {
+    this.queryParamsSubscription = this.route.queryParamMap.subscribe(
+      (params: ParamMap) => {
+        setTimeout(() => {
+          if (!this.preventAdditionalFetch) {
+            this.currentPage = Number(params.get('page') || '1')
+            this.fetchFeed()
+          }
+        }, 0)
+        this.preventAdditionalFetch = false
+      }
+    )
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const isApiUrlChanged =
+      !changes['apiUrlProps'].firstChange &&
+      changes['apiUrlProps'].currentValue !== changes['apiUrlProps'].previousValue
+    if (isApiUrlChanged) {
+      this.currentPage = 1
+      this.baseUrl = this.router.url.split('?')[0]
+      this.fetchFeed()
+      this.preventAdditionalFetch = true
+    }
+  }
+
   private fetchFeed(): void {
     const offset = (this.currentPage - 1) * this.limit
     const parsedUrl = parseUrl(this.apiUrlProps)
@@ -54,24 +81,6 @@ export class FeedComponent implements OnInit, OnDestroy, OnChanges {
     })
     const apiUrlWithParams = `${parsedUrl.url}?${stringifyParams}`
     this.store.dispatch(getFeedAction({url: apiUrlWithParams}))
-  }
-
-  private initializeListeners(): void {
-    this.queryParamsSubscription = this.route.queryParamMap.subscribe(
-      (params: ParamMap) => {
-        this.currentPage = Number(params.get('page') || '1')
-        this.fetchFeed()
-      }
-    )
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    const isApiUrlChanged =
-      !changes['apiUrlProps'].firstChange &&
-      changes['apiUrlProps'].currentValue !== changes['apiUrlProps'].previousValue
-    if (isApiUrlChanged) {
-      this.fetchFeed()
-    }
   }
 
   ngOnDestroy(): void {
