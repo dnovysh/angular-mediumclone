@@ -16,6 +16,7 @@ import {JwtInterceptor} from "src/app/shared/services/jwt-interceptor.service";
 import {GlobalFeedModule} from "src/app/global-feed/global-feed.module";
 import {YourFeedModule} from "src/app/your-feed/your-feed.module";
 import {TagFeedModule} from "src/app/tag-feed/tag-feed.module";
+import {ArticleModule} from "src/app/article/article/article.module";
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import {TagFeedModule} from "src/app/tag-feed/tag-feed.module";
     YourFeedModule,
     TagFeedModule,
     GlobalFeedModule,
+    ArticleModule,
     HttpClientModule,
     StoreModule.forRoot({router: routerReducer}, {}),
     EffectsModule.forRoot([]),

@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {Action, StoreModule} from "@ngrx/store";
-import {RouterModule} from "@angular/router";
+import {RouterModule, Routes} from "@angular/router";
 
 import {ArticleComponent} from './components/article/article.component';
 import {ArticleService as SharedArticleService} from "src/app/shared/services/article.service";
@@ -11,7 +11,15 @@ import {reducer} from "src/app/article/article/store/reducers";
 import {EffectsModule} from "@ngrx/effects";
 import {GetArticleEffect} from "src/app/article/article/store/effects/get-article.effect";
 import {ArticleStateInterface} from "src/app/article/article/types/article-state.interface";
+import {TagListModule} from "src/app/shared/modules/tag-list/tag-list.module";
 
+
+const routes: Routes = [
+  {
+    path: 'articles/:slug',
+    component: ArticleComponent
+  }
+]
 
 @NgModule({
   declarations: [
@@ -19,9 +27,10 @@ import {ArticleStateInterface} from "src/app/article/article/types/article-state
   ],
   imports: [
     CommonModule,
-    RouterModule,
+    RouterModule.forChild(routes),
     ErrorMessageModule,
     LoadingModule,
+    TagListModule,
     StoreModule.forFeature<ArticleStateInterface, Action>('article', reducer),
     EffectsModule.forFeature([GetArticleEffect])
   ],
