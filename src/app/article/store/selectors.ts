@@ -1,6 +1,6 @@
 import {createFeatureSelector, createSelector} from "@ngrx/store";
 
-import {ArticleStateInterface} from "src/app/article/article/types/article-state.interface";
+import {ArticleStateInterface} from "src/app/article/types/article-state.interface";
 import {AppStateInterface} from "src/app/shared/types/app-state.interface";
 import {ArticleInterface} from "src/app/shared/types/article.interface";
 

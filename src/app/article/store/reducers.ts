@@ -5,8 +5,8 @@ import {
   getArticleAction,
   getArticleFailureAction,
   getArticleSuccessAction
-} from "src/app/article/article/store/actions/get-article.action";
-import {ArticleStateInterface} from "src/app/article/article/types/article-state.interface";
+} from "src/app/article/store/actions/get-article.action";
+import {ArticleStateInterface} from "src/app/article/types/article-state.interface";
 
 const initialState: ArticleStateInterface = {
   isLoading: false,

@@ -1,6 +1,6 @@
 import {createAction, props} from "@ngrx/store";
 
-import {ActionTypes} from "src/app/article/article/store/action.types";
+import {ActionTypes} from "src/app/article/store/action.types";
 import {ArticleInterface} from "src/app/shared/types/article.interface";
 
 export const getArticleAction = createAction(

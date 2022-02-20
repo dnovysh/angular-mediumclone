@@ -3,11 +3,12 @@ import {select, Store} from "@ngrx/store";
 import {combineLatest, map, Observable, Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 
-import {getArticleAction} from "src/app/article/article/store/actions/get-article.action";
+import {getArticleAction} from "src/app/article/store/actions/get-article.action";
 import {ArticleInterface} from "src/app/shared/types/article.interface";
-import {articleSelector, errorSelector, isLoadingSelector} from "src/app/article/article/store/selectors";
+import {articleSelector, errorSelector, isLoadingSelector} from "src/app/article/store/selectors";
 import {currentUserSelector} from "src/app/auth/store/selector";
 import {CurrentUserInterface} from "src/app/shared/types/current-user.interface";
+import {deleteArticleAction} from "src/app/article/store/actions/delete-article.action";
 
 
 @Component({
@@ -30,6 +31,10 @@ export class ArticleComponent implements OnInit, OnDestroy {
     this.initializeValues()
     this.initializeListeners()
     this.fetchData()
+  }
+
+  deleteArticle(): void {
+    this.store.dispatch(deleteArticleAction({slug: this.slug}))
   }
 
   private initializeValues() {

@@ -17,12 +17,18 @@
         <span *ngIf="isAuthor$ | async">
           <a
             [routerLink]="['/articles', article.slug, 'edit']"
-            class="btn btn-outline-secondary btn-small"
+            class="btn btn-outline-secondary btn-sm"
           >
             <i class="ion-edit"></i>
             Edit Article
           </a>
-          DELETE BUTTON
+          <button
+            class="btn btn-outline-danger btn-sm"
+            (click)="deleteArticle()"
+          >
+            <i class="ion-trash-a"></i>
+            Delete Article
+          </button>
         </span>
       </div>
     </div>
