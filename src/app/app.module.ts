@@ -18,6 +18,7 @@ import {YourFeedModule} from "src/app/your-feed/your-feed.module";
 import {TagFeedModule} from "src/app/tag-feed/tag-feed.module";
 import {ArticleModule} from "src/app/article/article.module";
 import {ArticleCreateModule} from "src/app/article-create/article-create.module";
+import {ArticleEditModule} from "src/app/article-edit/article-edit.module";
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import {ArticleCreateModule} from "src/app/article-create/article-create.module"
     TagFeedModule,
     GlobalFeedModule,
     ArticleCreateModule,
+    ArticleEditModule,
     ArticleModule,
     HttpClientModule,
     StoreModule.forRoot({router: routerReducer}, {}),

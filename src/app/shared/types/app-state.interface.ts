@@ -3,11 +3,13 @@ import {FeedStateInterface} from "src/app/shared/modules/feed/types/feed-state.i
 import {PopularTagsStateItnterface} from "src/app/shared/modules/popular-tags/types/popular-tags-state.itnterface";
 import {ArticleStateInterface} from "src/app/article/types/article-state.interface";
 import {ArticleCreateStateInterface} from "src/app/article-create/store/article-create-state.interface";
+import {ArticleEditStateInterface} from "src/app/article-edit/store/article-edit-state.interface";
 
 export interface AppStateInterface {
-  auth: AuthStateInterface,
-  feed: FeedStateInterface,
-  popularTags: PopularTagsStateItnterface,
-  article: ArticleStateInterface,
+  auth: AuthStateInterface
+  feed: FeedStateInterface
+  popularTags: PopularTagsStateItnterface
+  article: ArticleStateInterface
   articleCreate: ArticleCreateStateInterface
+  articleEdit: ArticleEditStateInterface
 }
