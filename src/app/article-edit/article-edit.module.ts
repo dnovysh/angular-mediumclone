@@ -10,8 +10,8 @@ import {ArticleService as SharedArticleService} from "src/app/shared/services/ar
 import {GetArticleEffect} from "src/app/article-edit/store/get-article.effect";
 import {UpdateArticleEffect} from "src/app/article-edit/store/update-article.effect";
 import {ArticleFormModule} from "src/app/shared/modules/article-form/article-form.module";
-import {reducer} from "src/app/article-create/store/reducers";
 import {LoadingModule} from "src/app/shared/modules/loading/loading.module";
+import {reducer} from "src/app/article-edit/store/reducers";
 
 
 const routes = [

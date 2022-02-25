@@ -11,6 +11,7 @@ import {
   getArticleFailureAction,
   getArticleSuccessAction
 } from "src/app/article-edit/store/get-article.action";
+import {routerNavigatedAction} from "@ngrx/router-store";
 
 const initialState: ArticleEditStateInterface = {
   isLoading: false,
@@ -47,5 +48,6 @@ export const reducer = createReducer<ArticleEditStateInterface, Action>(
   on(getArticleFailureAction, (state): ArticleEditStateInterface => ({
     ...state,
     isLoading: false
-  }))
+  })),
+  on(routerNavigatedAction, () => initialState)
 )
