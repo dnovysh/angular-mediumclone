@@ -14,6 +14,7 @@ import {PersistenceService} from "src/app/shared/services/persistence.service";
 import {LoginEffect} from "src/app/auth/store/effects/login.effect";
 import {LoginComponent} from "src/app/auth/components/login/login.component";
 import {VerifyIdentityEffect} from "src/app/auth/store/effects/verify-identity.effect";
+import {UpdateCurrentUserEffect} from "src/app/auth/store/effects/update-current-user.effect";
 
 const routes: Routes = [
   {
@@ -35,7 +36,8 @@ const routes: Routes = [
     EffectsModule.forFeature([
       RegisterEffect,
       LoginEffect,
-      VerifyIdentityEffect
+      VerifyIdentityEffect,
+      UpdateCurrentUserEffect
     ]),
     ErrorMessagesModule
   ],

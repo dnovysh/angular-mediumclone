@@ -8,6 +8,8 @@ import {environment} from "src/environments/environment";
 import {AuthResponseInterface} from "src/app/auth/types/auth/auth-response.interface";
 import {LoginRequestInterface} from "src/app/auth/types/login/login-request.interface";
 import {LOGIN_API_URL, REGISTER_API_URL, VERIFY_IDENTITY_API_URL} from "src/app/shared/constants/app.constant";
+import {CurrentUserInputInterface} from "src/app/shared/types/current-user-input.interface";
+
 
 @Injectable()
 export class AuthService {
@@ -34,6 +36,11 @@ export class AuthService {
     const url = environment.apiUrl + VERIFY_IDENTITY_API_URL
 
     return this.http.get(url).pipe(map(this.getUser))
+  }
+
+  updateCurrentUser(currentUserInput: CurrentUserInputInterface): Observable<CurrentUserInterface> {
+    const url = environment.apiUrl + '/user'
+    return this.http.put(url, currentUserInput).pipe(map(this.getUser))
   }
 
   private getUser = (response: AuthResponseInterface): CurrentUserInterface => response.user

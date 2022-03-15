@@ -4,9 +4,11 @@ import {PopularTagsStateItnterface} from "src/app/shared/modules/popular-tags/ty
 import {ArticleStateInterface} from "src/app/article/types/article-state.interface";
 import {ArticleCreateStateInterface} from "src/app/article-create/store/article-create-state.interface";
 import {ArticleEditStateInterface} from "src/app/article-edit/store/article-edit-state.interface";
+import {AccountSettingsStateInterface} from "src/app/account-settings/store/account-settings-state.interface";
 
 export interface AppStateInterface {
   auth: AuthStateInterface
+  accountSettings: AccountSettingsStateInterface
   feed: FeedStateInterface
   popularTags: PopularTagsStateItnterface
   article: ArticleStateInterface
