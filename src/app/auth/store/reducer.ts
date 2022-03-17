@@ -9,6 +9,7 @@ import {
   verifyIdentitySuccessAction
 } from "src/app/auth/store/actions/verify-identity.action";
 import {updateCurrentUserSuccessAction} from "src/app/auth/store/actions/update-current-user.action";
+import {logoutAction} from "src/app/auth/store/actions/logout.action";
 
 const initialState: AuthStateInterface = {
   isSubmitting: false,
@@ -71,5 +72,9 @@ export const reducer = createReducer<AuthStateInterface, Action>(
   on(updateCurrentUserSuccessAction, (state, action): AuthStateInterface => ({
     ...state,
     currentUser: action.currentUser
+  })),
+  on(logoutAction, (): AuthStateInterface => ({
+    ...initialState,
+    isLoggedIn: false
   }))
 )

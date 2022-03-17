@@ -7,6 +7,9 @@ import {filter, Observable, Subscription} from "rxjs";
 import {currentUserSelector} from "src/app/auth/store/selector";
 import {BackendErrorsInterface} from "src/app/auth/types/auth/backend-errors.interface";
 import {errorsSelector, isSubmittingSelector} from "src/app/account-settings/store/selectors";
+import {updateCurrentUserAction} from "src/app/auth/store/actions/update-current-user.action";
+import {CurrentUserInputInterface} from "src/app/shared/types/current-user-input.interface";
+import {logoutAction} from "src/app/auth/store/actions/logout.action";
 
 
 @Component({
@@ -31,6 +34,18 @@ export class AccountSettingsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.currentUserSubscription.unsubscribe()
+  }
+
+  submit(): void {
+    const currentUserInput: CurrentUserInputInterface = {
+      ...this.currentUser,
+      ...this.form.value
+    }
+    this.store.dispatch(updateCurrentUserAction({currentUserInput}))
+  }
+
+  logout(): void {
+    this.store.dispatch(logoutAction())
   }
 
   private initializeValues(): void {
