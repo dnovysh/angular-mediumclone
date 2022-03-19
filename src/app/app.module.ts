@@ -20,6 +20,7 @@ import {ArticleModule} from "src/app/article/article.module";
 import {ArticleCreateModule} from "src/app/article-create/article-create.module";
 import {ArticleEditModule} from "src/app/article-edit/article-edit.module";
 import {AccountSettingsModule} from "src/app/account-settings/account-settings.module";
+import {UserProfileModule} from "src/app/user-profile/user-profile.module";
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import {AccountSettingsModule} from "src/app/account-settings/account-settings.m
     ArticleEditModule,
     ArticleModule,
     AccountSettingsModule,
+    UserProfileModule,
     HttpClientModule,
     StoreModule.forRoot({router: routerReducer}, {}),
     EffectsModule.forRoot([]),
