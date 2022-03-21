@@ -1,4 +1,4 @@
-<ul class="pagination">
+<ul class="pagination" *ngIf="pagesCount > 0">
   <li class="page-item" *ngFor="let page of pages" [ngClass]="{active: currentPageProps === page }" >
     <a class="page-link" [routerLink]="urlProps" [queryParams]="{page: page}">
       {{ page }}

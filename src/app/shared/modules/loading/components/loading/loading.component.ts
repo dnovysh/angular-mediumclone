@@ -1,8 +1,14 @@
-import {Component} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'mc-loading',
-  template: '<div>Loading...</div>'
+  template: '<div>{{loadingText}}</div>'
 })
-export class LoadingComponent {
+export class LoadingComponent implements OnInit{
+  @Input() loadingTextProps: string
+  loadingText: string
+
+  ngOnInit(): void {
+    this.loadingText = this.loadingTextProps ? this.loadingTextProps : 'Loading...'
+  }
 }

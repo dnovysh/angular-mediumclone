@@ -40,8 +40,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
     const isFavorites = this.router.url.includes('favorites')
     this.apiUrl = isFavorites
-      ? `${environment.apiUrl}/articles?favorited=${this.slug}`
-      : `${environment.apiUrl}/articles?author=${this.slug}`
+      ? `/articles?favorited=${this.slug}`
+      : `/articles?author=${this.slug}`
 
     this.isCurrentUserProfile$ = combineLatest([
       this.store.pipe(select(currentUserSelector), filter(Boolean)),
@@ -54,7 +54,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   private initializeListeners(): void {
     this.userProfileSubscription = this.store
       .pipe(select(userProfileSelector))
-      .subscribe((userProfile: ProfileInterface) => userProfile)
+      .subscribe((userProfile: ProfileInterface) => this.userProfile = userProfile)
   }
 
   private fetchData(): void {

@@ -8,6 +8,7 @@ import {UserProfileService} from "src/app/user-profile/services/user-profile.ser
 import {GetUserProfileEffect} from "src/app/user-profile/store/effects/get-user-profile.effect";
 import {StoreModule} from "@ngrx/store";
 import {reducer} from "src/app/user-profile/store/reducers";
+import {FeedModule} from "src/app/shared/modules/feed/feed.module";
 
 
 const routes = [
@@ -25,12 +26,13 @@ const routes = [
   declarations: [
     UserProfileComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    EffectsModule.forFeature([GetUserProfileEffect]),
-    StoreModule.forFeature('userProfile', reducer)
-  ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        EffectsModule.forFeature([GetUserProfileEffect]),
+        StoreModule.forFeature('userProfile', reducer),
+        FeedModule
+    ],
   providers: [
     UserProfileService
   ]
