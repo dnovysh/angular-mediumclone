@@ -1,9 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {combineLatest, filter, map, Observable, Subscription} from "rxjs";
 import {select, Store} from "@ngrx/store";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 
-import {environment} from "src/environments/environment";
 import {ProfileInterface} from "src/app/shared/types/profile.interface";
 import {getUserProfileAction} from "src/app/user-profile/store/actions/get-user-profile.action";
 import {errorSelector, isLoadingSelector, userProfileSelector} from "src/app/user-profile/store/selectors";
@@ -17,32 +16,27 @@ import {CurrentUserInterface} from "src/app/shared/types/current-user.interface"
 })
 export class UserProfileComponent implements OnInit, OnDestroy {
   userProfile: ProfileInterface
-  isLoading$: Observable<boolean>
-  error$: Observable<string | null>
-  userProfileSubscription: Subscription
   slug: string
   apiUrl: string
+
+  isLoading$: Observable<boolean>
+  error$: Observable<string | null>
   isCurrentUserProfile$: Observable<boolean>
+  
+  userProfileSubscription: Subscription
+  slugChangeSubscription: Subscription
 
   constructor(private store: Store, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit(): void {
-    this.initializeValues()
+    this.initializeObservables()
     this.initializeListeners()
-    this.fetchData()
   }
 
-  private initializeValues(): void {
-    this.slug = this.route.snapshot.paramMap.get('slug')
+  private initializeObservables(): void {
     this.isLoading$ = this.store.pipe(select(isLoadingSelector))
     this.error$ = this.store.pipe(select(errorSelector))
-
-    const isFavorites = this.router.url.includes('favorites')
-    this.apiUrl = isFavorites
-      ? `/articles?favorited=${this.slug}`
-      : `/articles?author=${this.slug}`
-
     this.isCurrentUserProfile$ = combineLatest([
       this.store.pipe(select(currentUserSelector), filter(Boolean)),
       this.store.pipe(select(userProfileSelector), filter(Boolean))
@@ -55,6 +49,19 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.userProfileSubscription = this.store
       .pipe(select(userProfileSelector))
       .subscribe((userProfile: ProfileInterface) => this.userProfile = userProfile)
+
+    this.slugChangeSubscription = this.route.params.subscribe((params: Params) => {
+      this.setValues(params['slug'])
+      this.fetchData()
+    })
+  }
+
+  private setValues(slug: string): void {
+    const isFavorites = this.router.url.includes('favorites')
+    this.slug = slug
+    this.apiUrl = isFavorites
+      ? `/articles?favorited=${this.slug}`
+      : `/articles?author=${this.slug}`
   }
 
   private fetchData(): void {
@@ -63,5 +70,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.userProfileSubscription.unsubscribe()
+    this.slugChangeSubscription.unsubscribe()
   }
 }

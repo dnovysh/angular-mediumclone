@@ -26,13 +26,13 @@ const routes = [
   declarations: [
     UserProfileComponent
   ],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        EffectsModule.forFeature([GetUserProfileEffect]),
-        StoreModule.forFeature('userProfile', reducer),
-        FeedModule
-    ],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    EffectsModule.forFeature([GetUserProfileEffect]),
+    StoreModule.forFeature('userProfile', reducer),
+    FeedModule
+  ],
   providers: [
     UserProfileService
   ]
