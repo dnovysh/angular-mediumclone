@@ -1,8 +1,8 @@
-import {createFeatureSelector, createSelector} from "@ngrx/store";
-import {AuthStateInterface} from "src/app/auth/types/auth/auth-state.interface";
-import {AppStateInterface} from "src/app/shared/types/app-state.interface";
-import {BackendErrorsInterface} from "src/app/auth/types/auth/backend-errors.interface";
-import {CurrentUserInterface} from "src/app/shared/types/current-user.interface";
+import { createFeatureSelector, createSelector } from "@ngrx/store";
+import { AuthStateInterface } from "src/app/auth/types/auth/auth-state.interface";
+import { AppStateInterface } from "src/app/shared/types/app-state.interface";
+import { BackendErrorsInterface } from "src/app/auth/types/auth/backend-errors.interface";
+import { CurrentUserInterface } from "src/app/shared/types/current-user.interface";
 
 export const authFeatureSelector = createFeatureSelector<AuthStateInterface>('auth');
 
